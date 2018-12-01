@@ -1171,6 +1171,122 @@ func ToIntSliceE(i interface{}) ([]int, error) {
 	}
 }
 
+// ToInt32SliceE casts an interface to a []int32 type.
+func ToInt32SliceE(i interface{}) ([]int32, error) {
+	if i == nil {
+		return []int32{}, fmt.Errorf("unable to cast %#v of type %T to []int32", i, i)
+	}
+
+	switch v := i.(type) {
+	case []int32:
+		return v, nil
+	}
+
+	kind := reflect.TypeOf(i).Kind()
+	switch kind {
+	case reflect.Slice, reflect.Array:
+		s := reflect.ValueOf(i)
+		a := make([]int32, s.Len())
+		for j := 0; j < s.Len(); j++ {
+			val, err := ToInt32E(s.Index(j).Interface())
+			if err != nil {
+				return []int32{}, fmt.Errorf("unable to cast %#v of type %T to []int32", i, i)
+			}
+			a[j] = val
+		}
+		return a, nil
+	default:
+		return []int32{}, fmt.Errorf("unable to cast %#v of type %T to []int32", i, i)
+	}
+}
+
+// ToInt64SliceE casts an interface to a []int64 type.
+func ToInt64SliceE(i interface{}) ([]int64, error) {
+	if i == nil {
+		return []int64{}, fmt.Errorf("unable to cast %#v of type %T to []int65", i, i)
+	}
+
+	switch v := i.(type) {
+	case []int64:
+		return v, nil
+	}
+
+	kind := reflect.TypeOf(i).Kind()
+	switch kind {
+	case reflect.Slice, reflect.Array:
+		s := reflect.ValueOf(i)
+		a := make([]int64, s.Len())
+		for j := 0; j < s.Len(); j++ {
+			val, err := ToInt64E(s.Index(j).Interface())
+			if err != nil {
+				return []int64{}, fmt.Errorf("unable to cast %#v of type %T to []int65", i, i)
+			}
+			a[j] = val
+		}
+		return a, nil
+	default:
+		return []int64{}, fmt.Errorf("unable to cast %#v of type %T to []int65", i, i)
+	}
+}
+
+// ToFloat32SliceE casts an interface to a []float32 type.
+func ToFloat32SliceE(i interface{}) ([]float32, error) {
+	if i == nil {
+		return []float32{}, fmt.Errorf("unable to cast %#v of type %T to []float32", i, i)
+	}
+
+	switch v := i.(type) {
+	case []float32:
+		return v, nil
+	}
+
+	kind := reflect.TypeOf(i).Kind()
+	switch kind {
+	case reflect.Slice, reflect.Array:
+		s := reflect.ValueOf(i)
+		a := make([]float32, s.Len())
+		for j := 0; j < s.Len(); j++ {
+			val, err := ToFloat32E(s.Index(j).Interface())
+			if err != nil {
+				return []float32{}, fmt.Errorf("unable to cast %#v of type %T to []float64", i, i)
+			}
+			a[j] = val
+		}
+		return a, nil
+	default:
+		return []float32{}, fmt.Errorf("unable to cast %#v of type %T to []float64", i, i)
+	}
+}
+
+// ToFloat64SliceE casts an interface to a []float64 type.
+func ToFloat64SliceE(i interface{}) ([]float64, error) {
+	if i == nil {
+		return []float64{}, fmt.Errorf("unable to cast %#v of type %T to []float64", i, i)
+	}
+
+	switch v := i.(type) {
+	case []float64:
+		return v, nil
+	}
+
+	kind := reflect.TypeOf(i).Kind()
+	switch kind {
+	case reflect.Slice, reflect.Array:
+		s := reflect.ValueOf(i)
+		a := make([]float64, s.Len())
+		for j := 0; j < s.Len(); j++ {
+			val, err := ToFloat64E(s.Index(j).Interface())
+			if err != nil {
+				return []float64{}, fmt.Errorf("unable to cast %#v of type %T to []float64", i, i)
+			}
+			a[j] = val
+		}
+		return a, nil
+	default:
+		return []float64{}, fmt.Errorf("unable to cast %#v of type %T to []float64", i, i)
+	}
+}
+
 // ToDurationSliceE casts an interface to a []time.Duration type.
 func ToDurationSliceE(i interface{}) ([]time.Duration, error) {
 	if i == nil {

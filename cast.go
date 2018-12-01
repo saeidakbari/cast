@@ -164,6 +164,30 @@ func ToIntSlice(i interface{}) []int {
 	return v
 }
 
+// ToInt32Slice casts an interface to a []int32 type.
+func ToInt32Slice(i interface{}) []int32 {
+	v, _ := ToInt32SliceE(i)
+	return v
+}
+
+// ToInt64Slice casts an interface to a []int64 type.
+func ToInt64Slice(i interface{}) []int64 {
+	v, _ := ToInt64SliceE(i)
+	return v
+}
+
+// ToFloat32Slice casts an interface to a []float32 type.
+func ToFloat32Slice(i interface{}) []float32 {
+	v, _ := ToFloat32SliceE(i)
+	return v
+}
+
+// ToFloat64Slice casts an interface to a []float64 type.
+func ToFloat64Slice(i interface{}) []float64 {
+	v, _ := ToFloat64SliceE(i)
+	return v
+}
+
 // ToDurationSlice casts an interface to a []time.Duration type.
 func ToDurationSlice(i interface{}) []time.Duration {
 	v, _ := ToDurationSliceE(i)
